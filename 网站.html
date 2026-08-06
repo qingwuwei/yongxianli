@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>涌现力 · 普通人成长路径</title>
+    <!-- 原理说明：这里是CSS样式区，控制所有颜色、排版、间距和动画 -->
+    <style>
+        /* ----- 全局重置与基础配色（深蓝+金色） ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f8f9fc;
+            color: #1a233a;
+            scroll-behavior: smooth; /* 让页面滚动更顺滑 */
+        }
+
+        /* 定义主色：深蓝(#0B1B3D) 和 金色(#D4AF37) */
+        :root {
+            --deep-blue: #0B1B3D;
+            --gold: #D4AF37;
+            --light-gold: #f0e0a0;
+            --text-light: #f0f4ff;
+        }
+
+        /* ----- 顶部导航栏 ----- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(11, 27, 61, 0.95); /* 半透明深蓝，更现代 */
+            backdrop-filter: blur(8px);
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 999;
+            border-bottom: 2px solid var(--gold);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+        .logo span {
+            color: #fff;
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: #ccd6f6;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s, border-bottom 0.3s;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-links a:hover {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+
+        /* ----- 首屏英雄区 (Hero) ----- */
+        .hero {
+            background: var(--deep-blue);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            background-image: radial-gradient(circle at 20% 30%, #1a3355 0%, #0B1B3D 70%);
+        }
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .hero h1 .gold {
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+        .hero p {
+            font-size: 26px;
+            color: var(--light-gold);
+            letter-spacing: 4px;
+            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+        .hero .btn-gold {
+            background: var(--gold);
+            color: var(--deep-blue);
+            padding: 14px 48px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 18px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+        }
+        .hero .btn-gold:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 36px rgba(212, 175, 55, 0.6);
+        }
+
+        /* ----- 通用标题与容器 ----- */
+        .section {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--deep-blue);
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .section-title .gold {
+            color: var(--gold);
+        }
+        .section-sub {
+            text-align: center;
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 50px;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ----- 关于我们 (纯文案区) ----- */
+        #about {
+            background: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+        }
+        .about-text {
+            flex: 1 1 400px;
+            font-size: 18px;
+            line-height: 1.9;
+            color: #2c3e50;
+        }
+        .about-text strong {
+            color: var(--deep-blue);
+        }
+        .about-tag {
+            flex: 0 0 200px;
+            background: var(--deep-blue);
+            color: var(--gold);
+            padding: 30px 20px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+            border: 2px solid var(--gold);
+        }
+        .about-tag small {
+            display: block;
+            font-weight: 400;
+            font-size: 16px;
+            color: #ccd6f6;
+            margin-top: 8px;
+        }
+
+        /* ----- 3个核心服务卡片 (重点！) ----- */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        /* 这就是你要求的“悬停上浮”卡片 */
+        .service-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(11, 27, 61, 0.08);
+            border-top: 6px solid var(--gold);
+            transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                        box-shadow 0.35s ease;
+            text-align: center;
+            cursor: default;
+        }
+        /* 核心特效：上浮 + 阴影加深 */
+        .service-card:hover {
+            transform: translateY(-16px);
+            box-shadow: 0 28px 50px rgba(11, 27, 61, 0.18);
+        }
+
+        .service-card .icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .service-card h3 {
+            font-size: 26px;
+            color: var(--deep-blue);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .service-card h3 .gold {
+            color: var(--gold);
+        }
+        .service-card p {
+            color: #445566;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        .service-card .highlight {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 6px 20px;
+            border: 1px solid var(--deep-blue);
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--deep-blue);
+            transition: 0.3s;
+        }
+        .service-card:hover .highlight {
+            background: var(--deep-blue);
+            color: #fff;
+        }
+
+        /* ----- 页脚 + 公众号 ----- */
+        .footer {
+            background: var(--deep-blue);
+            color: #aab4d0;
+            text-align: center;
+            padding: 48px 20px 32px;
+            border-top: 3px solid var(--gold);
+        }
+        .footer .gold {
+            color: var(--gold);
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        .footer .wechat {
+            margin: 16px 0 8px;
+            font-size: 20px;
+            background: rgba(212, 175, 55, 0.12);
+            display: inline-block;
+            padding: 10px 32px;
+            border-radius: 60px;
+            color: var(--light-gold);
+            border: 1px dashed var(--gold);
+        }
+        .footer small {
+            display: block;
+            margin-top: 20px;
+            opacity: 0.7;
+        }
+
+        /* ----- 手机自适应 (移动端友好) ----- */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 12px 16px;
+                gap: 12px;
+            }
+            .nav-links {
+                gap: 18px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-links a {
+                font-size: 14px;
+            }
+            .hero h1 {
+                font-size: 40px;
+            }
+            .hero p {
+                font-size: 18px;
+                letter-spacing: 2px;
+            }
+            .section {
+                padding: 50px 20px;
+            }
+            .section-title {
+                font-size: 30px;
+            }
+            .service-card {
+                padding: 30px 20px;
+            }
+            .about-tag {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== 顶部导航 ========== -->
+    <nav class="navbar">
+        <a href="#" class="logo">涌现<span>力</span></a>
+        <ul class="nav-links">
+            <li><a href="#about">关于我们</a></li>
+            <li><a href="#give">我们能给你什么</a></li>
+            <li><a href="#get">你能给我们什么</a></li>
+            <li><a href="#join">如果加入我们</a></li>
+        </ul>
+    </nav>
+
+    <!-- ========== 首屏 ========== -->
+    <header class="hero" id="home">
+        <h1>涌·现·<span class="gold">力</span></h1>
+        <p>专注互联网时代普通人的成长路径</p>
+        <a href="#give" class="btn-gold">探索成长 →</a>
+    </header>
+
+    <!-- ========== 关于我们 ========== -->
+    <section class="section" id="about">
+        <h2 class="section-title">关于 <span class="gold">我们</span></h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p><strong>「涌现力」</strong> 不是一个高高在上的导师机构，而是一个<strong>陪伴型成长共同体</strong>。</p>
+                <p style="margin-top: 16px;">我们相信：在互联网时代，每一个普通人都拥有未被激发的潜能。通过正确的路径设计、认知升级和社群共进，<strong>个体涌现的力量足以改变人生轨迹</strong>。</p>
+                <p style="margin-top: 16px; color: #0B1B3D; font-weight: 500;">📍 不贩卖焦虑，只交付可落地的成长系统。</p>
+            </div>
+            <div class="about-tag">
+                📢 公众号<br>
+                <small>涌现力.com</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 3个核心服务卡片（这里完美对应你的三个选项） ========== -->
+    <section class="section" id="give" style="background: #f8f9fc; border-radius: 40px 40px 0 0; margin-bottom: 0; padding-bottom: 60px;">
+        <h2 class="section-title">我们的核心 <span class="gold">价值</span></h2>
+        <p class="section-sub">三大板块，环环相扣，陪你走好每一步</p>
+
+        <div class="cards-grid">
+            <!-- 卡片 1：我们能给你什么 -->
+            <div class="service-card" id="give">
+                <span class="icon">🎯</span>
+                <h3>我们能给你 <span class="gold">什么</span></h3>
+                <p>一套<strong>系统化的认知地图</strong>，包括：互联网思维拆解、副业启动清单、个人IP轻量化搭建方案。不整虚的，拿来就能用。</p>
+                <span class="highlight">方法论 + 工具包</span>
+            </div>
+
+            <!-- 卡片 2：你能给我们什么 -->
+            <div class="service-card" id="get">
+                <span class="icon">🤝</span>
+                <h3>你能给我们 <span class="gold">什么</span></h3>
+                <p>你最宝贵的<strong>真实反馈与实践故事</strong>。你的每一次尝试、每一次踩坑，都是社群最珍贵的养分。我们共同打磨，彼此照亮。</p>
+                <span class="highlight">经验 + 真诚</span>
+            </div>
+
+            <!-- 卡片 3：如果加入我们 -->
+            <div class="service-card" id="join">
+                <span class="icon">🚀</span>
+                <h3>如果 <span class="gold">加入我们</span></h3>
+                <p>你将获得：<strong>专属成长档案</strong>、每月主题行动营、以及一群“不装、不卷、不放弃”的同路伙伴。成长不再孤独。</p>
+                <span class="highlight">社群 + 陪跑</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 页脚 + 公众号信息 ========== -->
+    <footer class="footer">
+        <div class="gold">涌·现·力</div>
+        <div style="margin: 8px 0 4px; font-size: 18px; color: #ccd6f6;">专注互联网时代普通人的成长路径</div>
+        <div class="wechat">📱 公众号：涌现力.com</div>
+        <small>© 2026 涌现力 · 陪你成为更好的自己</small>
+    </footer>
+
+    <!-- ========== 极简JS交互（让导航点击平滑滚动，并增加一点小彩蛋） ========== -->
+    <script>
+        // 原理：点击导航链接时，浏览器平滑滚动到对应区域，体验更丝滑
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();          // 阻止默认跳转
+                const targetId = this.getAttribute('href'); // 获取 #about 等
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',   // 平滑滚动效果
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 小彩蛋：控制台输出欢迎语（你不需要管，这是程序员的小浪漫）
+        console.log('✨ 涌现力 · 普通人的不凡之路 ✨');
+        console.log('📢 公众号：涌现力.com');
+    </script>
+
+</body>
+</html>
