@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>涌现力 · 普通人成长路径</title>
+    <title>涌现力 · 新职业可能</title>
     <style>
-        /* ===== 全局重置 & 配色 ===== */
+        /* ===== 全局重置 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -13,18 +13,23 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
-            background-color: #f8f9fc;
-            color: #1a233a;
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background: #f5f6f8;
+            color: #1a1a2e;
             line-height: 1.7;
             scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
         }
 
+        /* ===== 金融风格配色 ===== */
         :root {
-            --deep-blue: #0B1B3D;
-            --gold: #D4AF37;
-            --light-gold: #f0e0a0;
-            --text-light: #f0f4ff;
+            --navy: #0b1a2f;        /* 深蓝（近似金融机构常用色） */
+            --gold: #c9a84c;        /* 哑光金，更内敛 */
+            --gold-light: #e8d5a3;
+            --gray-bg: #f5f6f8;
+            --card-white: #ffffff;
+            --text-dark: #1a1a2e;
+            --text-muted: #5a6a7a;
         }
 
         /* ===== 导航栏 ===== */
@@ -33,42 +38,44 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(11, 27, 61, 0.95);
-            backdrop-filter: blur(8px);
-            padding: 14px 40px;
+            background: rgba(11, 26, 47, 0.96);
+            backdrop-filter: blur(10px);
+            padding: 14px 48px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 999;
-            border-bottom: 2px solid var(--gold);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+            box-shadow: 0 2px 24px rgba(0, 0, 0, 0.08);
         }
 
         .logo {
-            font-size: 26px;
-            font-weight: 700;
+            font-size: 22px;
+            font-weight: 600;
             color: var(--gold);
-            letter-spacing: 2px;
+            letter-spacing: 4px;
             text-decoration: none;
         }
         .logo span {
             color: #fff;
             font-weight: 300;
+            letter-spacing: 2px;
         }
 
         .nav-links {
             display: flex;
-            gap: 28px;
+            gap: 36px;
             list-style: none;
         }
         .nav-links a {
-            color: #ccd6f6;
+            color: rgba(255, 255, 255, 0.75);
             text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
-            transition: color 0.3s, border-bottom 0.3s;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: color 0.25s;
             padding-bottom: 4px;
-            border-bottom: 2px solid transparent;
+            border-bottom: 1.5px solid transparent;
         }
         .nav-links a:hover {
             color: var(--gold);
@@ -77,222 +84,280 @@
 
         /* ===== 首屏 Hero ===== */
         .hero {
-            background: var(--deep-blue);
-            min-height: 70vh;
+            background: var(--navy);
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 140px 24px 60px;
-            background-image: radial-gradient(circle at 20% 30%, #1a3355 0%, #0B1B3D 70%);
+            padding: 140px 24px 70px;
+            background-image: radial-gradient(ellipse at 30% 20%, #1a3550 0%, #0b1a2f 75%);
+            position: relative;
         }
+        /* 简洁装饰线 */
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 2px;
+            background: var(--gold);
+            opacity: 0.5;
+        }
+
         .hero h1 {
-            font-size: 52px;
-            font-weight: 700;
+            font-size: 72px;          /* 放大！更大气 */
+            font-weight: 600;
             color: #fff;
-            margin-bottom: 12px;
+            letter-spacing: 8px;
+            margin-bottom: 16px;
         }
         .hero h1 .gold {
             color: var(--gold);
-            text-shadow: 0 0 30px rgba(212, 175, 55, 0.25);
-        }
-        .hero .subhead {
-            font-size: 22px;
-            color: var(--light-gold);
-            letter-spacing: 2px;
-            max-width: 700px;
-            margin-bottom: 8px;
-        }
-        .hero .desc {
-            font-size: 17px;
-            color: #aab4d0;
-            max-width: 600px;
         }
 
-        /* ===== 文章正文区 ===== */
+        .hero .subhead {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 4px;
+            font-weight: 300;
+            max-width: 640px;
+            margin-bottom: 6px;
+        }
+        .hero .desc {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        /* ===== 文章正文（金融风格：留白大、字体细） ===== */
         .article {
             max-width: 820px;
             margin: 0 auto;
-            padding: 60px 24px 40px;
+            padding: 70px 28px 50px;
             background: #fff;
         }
 
         .article h2 {
-            font-size: 32px;
-            color: var(--deep-blue);
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--navy);
             margin-top: 48px;
-            margin-bottom: 16px;
-            border-left: 5px solid var(--gold);
-            padding-left: 18px;
+            margin-bottom: 14px;
+            letter-spacing: 1px;
+            padding-left: 0;
+            border-left: none;
         }
-
         .article h2:first-of-type {
             margin-top: 0;
         }
 
         .article h3 {
-            font-size: 22px;
-            color: var(--deep-blue);
-            margin-top: 32px;
-            margin-bottom: 12px;
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--navy);
+            margin-top: 30px;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
         }
 
         .article p {
-            font-size: 17px;
-            color: #2c3e50;
+            font-size: 16.5px;
+            color: #2a2a3e;
             margin-bottom: 18px;
+            font-weight: 400;
+            line-height: 1.8;
         }
 
         .article .highlight-box {
-            background: #f0f4ff;
-            border-left: 4px solid var(--gold);
-            padding: 20px 28px;
+            background: #f0f2f6;
+            border-left: 3px solid var(--gold);
+            padding: 18px 28px;
             margin: 28px 0;
-            border-radius: 0 12px 12px 0;
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--deep-blue);
+            border-radius: 0 6px 6px 0;
+            font-size: 17px;
+            font-weight: 400;
+            color: var(--navy);
         }
 
         .article ul {
-            margin: 16px 0 20px 24px;
+            margin: 14px 0 20px 20px;
             list-style: none;
         }
         .article ul li {
-            font-size: 17px;
-            color: #2c3e50;
-            margin-bottom: 8px;
-            padding-left: 28px;
+            font-size: 16.5px;
+            color: #2a2a3e;
+            margin-bottom: 6px;
+            padding-left: 22px;
             position: relative;
         }
         .article ul li::before {
-            content: "◆";
+            content: "—";
             color: var(--gold);
             position: absolute;
             left: 0;
-            font-size: 14px;
+            font-weight: 300;
         }
 
         .article .divider {
             text-align: center;
             color: var(--gold);
-            font-size: 24px;
-            letter-spacing: 12px;
-            margin: 40px 0 20px;
-            opacity: 0.5;
+            font-size: 18px;
+            letter-spacing: 16px;
+            margin: 44px 0 24px;
+            opacity: 0.35;
         }
 
-        /* ===== 15分钟挑战 CTA 区块 ===== */
+        /* ===== 15分钟挑战 CTA（金融风格卡片） ===== */
         .cta-section {
-            background: var(--deep-blue);
-            padding: 60px 24px;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 20px 28px 60px;
+            background: #fff;
+        }
+
+        .cta-card {
+            background: var(--navy);
+            padding: 48px 40px 44px;
+            border-radius: 12px;
             text-align: center;
-            border-top: 4px solid var(--gold);
-            border-bottom: 4px solid var(--gold);
-            margin: 20px 0 0;
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            box-shadow: 0 8px 32px rgba(11, 26, 47, 0.10);
         }
-        .cta-section h2 {
+        .cta-card h2 {
             color: #fff;
-            font-size: 34px;
-            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
         }
-        .cta-section h2 .gold {
+        .cta-card h2 .gold {
             color: var(--gold);
         }
-        .cta-section p {
-            color: #ccd6f6;
-            font-size: 18px;
-            max-width: 600px;
+        .cta-card p {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 16px;
+            max-width: 520px;
             margin: 0 auto 28px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
         .cta-btn {
             display: inline-block;
             background: var(--gold);
-            color: var(--deep-blue);
-            padding: 16px 52px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 20px;
+            color: var(--navy);
+            padding: 14px 48px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 17px;
+            letter-spacing: 1px;
             text-decoration: none;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 8px 28px rgba(212, 175, 55, 0.35);
+            transition: transform 0.25s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(201, 168, 76, 0.25);
         }
         .cta-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.55);
+            transform: scale(1.02);
+            box-shadow: 0 8px 32px rgba(201, 168, 76, 0.40);
         }
         .cta-btn small {
             display: block;
-            font-weight: 400;
-            font-size: 14px;
-            opacity: 0.8;
+            font-weight: 300;
+            font-size: 13px;
+            opacity: 0.75;
             margin-top: 4px;
+            letter-spacing: 0.3px;
         }
 
         /* ===== 页脚 ===== */
         .footer {
-            background: var(--deep-blue);
-            color: #aab4d0;
+            background: var(--navy);
+            color: rgba(255, 255, 255, 0.5);
             text-align: center;
-            padding: 40px 20px 28px;
+            padding: 36px 20px 28px;
+            border-top: 1px solid rgba(201, 168, 76, 0.15);
         }
-        .footer .gold {
+        .footer .brand {
             color: var(--gold);
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: 2px;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 4px;
+        }
+        .footer .brand span {
+            color: #fff;
+            font-weight: 300;
         }
         .footer .wechat {
-            margin: 12px 0 6px;
-            font-size: 18px;
-            background: rgba(212, 175, 55, 0.10);
+            margin: 10px 0 4px;
+            font-size: 15px;
+            background: rgba(201, 168, 76, 0.08);
             display: inline-block;
-            padding: 6px 28px;
-            border-radius: 40px;
-            color: var(--light-gold);
-            border: 1px dashed var(--gold);
-        }
-        .footer small {
-            display: block;
-            margin-top: 16px;
-            opacity: 0.6;
-            font-size: 14px;
+            padding: 4px 24px;
+            border-radius: 30px;
+            color: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            letter-spacing: 1px;
         }
 
-        /* ===== 移动端自适应 ===== */
+        /* ===== 浏览量统计（小字） ===== */
+        .footer .stats {
+            margin-top: 18px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.25);
+            letter-spacing: 0.5px;
+            font-weight: 300;
+        }
+        .footer .stats span {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        .footer .copyright {
+            margin-top: 14px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.18);
+            letter-spacing: 1px;
+        }
+
+        /* ===== 移动端 ===== */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
                 padding: 10px 16px;
-                gap: 10px;
+                gap: 8px;
             }
             .nav-links {
-                gap: 16px;
+                gap: 18px;
                 flex-wrap: wrap;
                 justify-content: center;
             }
             .nav-links a {
-                font-size: 13px;
+                font-size: 12px;
             }
             .hero h1 {
-                font-size: 32px;
+                font-size: 44px;      /* 手机端依然大气 */
+                letter-spacing: 4px;
             }
             .hero .subhead {
-                font-size: 18px;
+                font-size: 17px;
+                letter-spacing: 2px;
+            }
+            .article {
+                padding: 40px 18px 30px;
             }
             .article h2 {
-                font-size: 26px;
+                font-size: 24px;
             }
-            .article h3 {
-                font-size: 20px;
+            .cta-card {
+                padding: 32px 20px 30px;
             }
-            .cta-section h2 {
-                font-size: 26px;
+            .cta-card h2 {
+                font-size: 22px;
             }
             .cta-btn {
-                padding: 14px 32px;
-                font-size: 17px;
+                padding: 12px 32px;
+                font-size: 15px;
             }
         }
     </style>
@@ -303,10 +368,10 @@
     <nav class="navbar">
         <a href="#" class="logo">涌现<span>力</span></a>
         <ul class="nav-links">
-            <li><a href="#article-start">关于我们</a></li>
-            <li><a href="#why-now">新的可能</a></li>
-            <li><a href="#what-we-do">培养体系</a></li>
-            <li><a href="#cta">15分钟挑战</a></li>
+            <li><a href="#article-start">关于</a></li>
+            <li><a href="#why-now">新职业</a></li>
+            <li><a href="#what-we-do">培养</a></li>
+            <li><a href="#cta">挑战</a></li>
         </ul>
     </nav>
 
@@ -321,7 +386,7 @@
     <div class="article" id="article-start">
 
         <h2>为什么普通人也应该了解一种新的职业可能？</h2>
-        <p style="font-size:19px; color:#0B1B3D; font-weight:500; border-bottom:2px solid #f0e0a0; padding-bottom:12px;">
+        <p style="font-size:17px; color:#0b1a2f; font-weight:500; border-bottom:1px solid #e8d5a3; padding-bottom:14px; margin-bottom:24px;">
             🔹 如果你正在寻找人生下一阶段的可能，这篇文章值得你读完。
         </p>
 
@@ -364,8 +429,8 @@
 
         <p>今天，一个普通人也可以通过互联网：学习新的能力、连接更多资源、建立自己的影响力、创造新的价值。</p>
 
-        <p>未来越来越重要的问题，不再只是：“哪个公司愿意给我一个机会？”<br />
-        而是：<strong>“我是否拥有创造机会的能力？”</strong></p>
+        <p>未来越来越重要的问题，不再只是："哪个公司愿意给我一个机会？"<br />
+        而是：<strong>"我是否拥有创造机会的能力？"</strong></p>
 
         <p>你的能力、经验、学习能力，以及你建立的连接，都可能成为属于自己的长期资产。</p>
 
@@ -441,7 +506,7 @@
         <p>你只需要先回答一个更简单的问题：</p>
 
         <div class="highlight-box">
-            <p style="margin:0; font-size:20px;"><strong>我是否有可能适合这条道路？</strong></p>
+            <p style="margin:0; font-size:18px;"><strong>我是否有可能适合这条道路？</strong></p>
         </div>
 
         <p>所以，我们设计了一个<strong>15分钟挑战</strong>。</p>
@@ -451,23 +516,34 @@
 
     <!-- ===== 15分钟挑战 CTA ===== -->
     <div class="cta-section" id="cta">
-        <h2>⏳ 15分钟 · 验证自己 <span class="gold">是否有潜力</span></h2>
-        <p>如果你想了解自己是否适合交易：<br />
-        免费注册挑战账号，完成一次15分钟挑战。<br />
-        <span style="opacity:0.7; font-size:15px;">挑战结果会发送到你的邮箱，请填写真实邮箱。</span></p>
-        <a href="https://ai.ziyingke.com/login?ref=042" target="_blank" class="cta-btn">
-            立即开始挑战
-            <small>15分钟，也许不能改变人生，但可能发现新的可能</small>
-        </a>
+        <div class="cta-card">
+            <h2>⏳ 15分钟 · 验证 <span class="gold">你的潜力</span></h2>
+            <p>免费注册挑战账号，完成一次真实交易体验。<br />
+            <span style="opacity:0.5; font-size:14px;">挑战结果将发送至你的邮箱，请填写真实邮箱</span></p>
+            <a href="https://ai.ziyingke.com/login?ref=042" target="_blank" class="cta-btn">
+                立即开始挑战
+                <small>15分钟，发现一种新的职业可能</small>
+            </a>
+        </div>
     </div>
 
     <!-- ===== 页脚 ===== -->
     <footer class="footer">
-        <div class="gold">涌·现·力</div>
-        <div style="font-size:16px; color:#ccd6f6; margin:4px 0;">专注互联网时代普通人的成长路径</div>
+        <div class="brand">涌·现·<span>力</span></div>
+        <div style="font-size:14px; color:rgba(255,255,255,0.4); letter-spacing:2px; margin:4px 0;">专注互联网时代普通人的成长路径</div>
         <div class="wechat">📱 公众号：涌现力.com</div>
-        <small>© 2026 涌现力 · 陪你成为更好的自己</small>
+
+        <!-- ===== 浏览量统计（不蒜子） ===== -->
+        <div class="stats">
+            本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
+            &nbsp;·&nbsp; 今日：<span id="busuanzi_value_site_uv"></span> 人
+        </div>
+
+        <div class="copyright">© 2026 涌现力 · 陪你成为更好的自己</div>
     </footer>
+
+    <!-- ===== 不蒜子统计脚本（轻量级，纯前端计数） ===== -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
     <!-- ===== 平滑滚动 JS ===== -->
     <script>
@@ -482,7 +558,7 @@
                 }
             });
         });
-        console.log('✨ 涌现力 · 普通人的不凡之路 ✨');
+        console.log('✨ 涌现力 · 新职业可能 ✨');
     </script>
 
 </body>
