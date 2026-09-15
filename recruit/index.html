@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>远程岗位招募 | yongxianli.com</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #222;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 48px;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 16px;
+            color: #111;
+        }
+        .desc {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 32px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .checkbox-row {
+            display: flex;
+            gap:10px;
+            align-items: flex-start;
+        }
+        .checkbox-row input {
+            margin-top:4px;
+        }
+        .submit-btn {
+            width:100%;
+            padding:14px;
+            background:#2563eb;
+            color:#fff;
+            border:none;
+            border-radius:8px;
+            font-size:17px;
+            cursor:pointer;
+        }
+        .submit-btn:hover {
+            background:#1d4ed8;
+        }
+        .tip {
+            margin-top:20px;
+            font-size:13px;
+            color:#666;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 28px 20px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>探索远程线上工作机会</h1>
+        <p class="desc">
+            我们正在寻找希望探索新职业道路的伙伴。如果你对远程线上工作模式感兴趣，可以填写下方表单，提交你的信息。
+            我们会向你发送岗位相关介绍与招募通知。
+        </p>
+
+        <form action="https://5fanhztx.jsjform.com/f/wkJU8l" method="POST" target="_blank">
+            <div class="form-group">
+                <label>姓名</label>
+                <input type="text" name="name" required placeholder="请填写你的姓名">
+            </div>
+            <div class="form-group">
+                <label>邮箱地址</label>
+                <input type="email" name="email" required placeholder="用于接收岗位邀请邮件">
+            </div>
+            <div class="form-group checkbox-row">
+                <input type="checkbox" name="optin" id="optin" required>
+                <label for="optin">
+                    I agree to receive job invitation emails from our team.
+                    我同意接收团队发送的岗位机会邮件。
+                </label>
+            </div>
+            <button class="submit-btn" type="submit">提交信息</button>
+        </form>
+        <p class="tip">
+            说明：我们不会把你的邮箱出售、分享给第三方。你随时可以点击邮件内退订链接取消订阅。
+        </p>
+    </div>
+</body>
+</html>
