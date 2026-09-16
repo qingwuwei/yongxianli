@@ -6,7 +6,6 @@
     <title>涌现力 · 新职业可能</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
             background: #f5f6f8;
@@ -15,7 +14,6 @@
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
         }
-
         :root {
             --navy: #0b1a2f;
             --gold: #c9a84c;
@@ -24,7 +22,6 @@
             --text-dark: #1a1a2e;
             --text-muted: #5a6a7a;
         }
-
         /* ===== 导航栏 ===== */
         .navbar {
             position: fixed; top: 0; left: 0; width: 100%;
@@ -38,7 +35,6 @@
         }
         .logo { font-size: 22px; font-weight: 600; color: var(--gold); letter-spacing: 4px; text-decoration: none; }
         .logo span { color: #fff; font-weight: 300; letter-spacing: 2px; }
-
         .nav-links { display: flex; gap: 32px; list-style: none; }
         .nav-links a {
             color: rgba(255, 255, 255, 0.75); text-decoration: none;
@@ -48,7 +44,6 @@
         }
         .nav-links a:hover { color: var(--gold); border-bottom-color: var(--gold); }
         .nav-links a.nav-highlight { color: var(--gold); font-weight: 500; }
-
         /* ===== 首屏 ===== */
         .hero {
             background: var(--navy); min-height: 80vh;
@@ -66,7 +61,6 @@
         .hero h1 .gold { color: var(--gold); }
         .hero .subhead { font-size: 20px; color: rgba(255,255,255,0.8); letter-spacing: 4px; font-weight: 300; max-width: 640px; margin-bottom: 6px; }
         .hero .desc { font-size: 16px; color: rgba(255,255,255,0.5); letter-spacing: 2px; font-weight: 300; }
-
         /* ===== 文章正文 ===== */
         .article { max-width: 820px; margin: 0 auto; padding: 70px 28px 50px; background: #fff; }
         .article h2 { font-size: 28px; font-weight: 600; color: var(--navy); margin-top: 48px; margin-bottom: 14px; letter-spacing: 1px; }
@@ -82,7 +76,29 @@
         .article ul li { font-size: 16.5px; color: #2a2a3e; margin-bottom: 6px; padding-left: 22px; position: relative; }
         .article ul li::before { content: "—"; color: var(--gold); position: absolute; left: 0; font-weight: 300; }
         .article .divider { text-align: center; color: var(--gold); font-size: 18px; letter-spacing: 16px; margin: 44px 0 24px; opacity: 0.35; }
-
+        /* ===== 订阅表单（重点，给Sender审核看的opt-in区域） ===== */
+        .subscribe-section { max-width: 820px; margin: 0 auto; padding: 20px 28px 40px; background: #fff; }
+        .subscribe-card {
+            background: #f0f2f6; border-radius: 12px; padding: 44px 40px 40px;
+            border: 1px solid rgba(11, 26, 47, 0.08);
+        }
+        .subscribe-card h2 { color: var(--navy); font-size: 26px; font-weight: 600; letter-spacing: 1px; margin-bottom: 10px; text-align:center; }
+        .subscribe-card h2 .gold { color: var(--gold); }
+        .subscribe-card p { color: var(--text-muted); font-size: 16px; max-width: 680px; margin: 0 auto 26px; line-height: 1.8; text-align:center; }
+        .form-row {margin-bottom:18px;}
+        .form-row label {display:block; margin-bottom:6px; font-weight:500; color:#0b1a2f;}
+        .form-row input {width:100%; padding:12px 16px; border:1px solid #d0d8e3; border-radius:8px; font-size:16px;}
+        .checkbox-row {margin:16px 0;}
+        .checkbox-row label {font-size:14px; color:#334155; line-height:1.6;}
+        .submit-btn {
+            display:block; width:100%; background: var(--navy); color: #fff;
+            padding: 14px; border-radius: 8px; font-weight: 500;
+            font-size: 17px; letter-spacing: 1px; border:none; cursor:pointer;
+            transition: transform 0.25s, box-shadow 0.3s, background 0.25s;
+            box-shadow: 0 6px 24px rgba(11, 26, 47, 0.18);
+        }
+        .submit-btn:hover { transform: scale(1.01); background: #142a4a; box-shadow: 0 10px 36px rgba(11, 26, 47, 0.28); }
+        .privacy-text {margin-top:16px; font-size:13px; color:#5a6a7a; line-height:1.6;}
         /* ===== 15分钟挑战 CTA ===== */
         .cta-section { max-width: 820px; margin: 0 auto; padding: 20px 28px 40px; background: #fff; }
         .cta-card {
@@ -102,7 +118,6 @@
         }
         .cta-btn:hover { transform: scale(1.02); box-shadow: 0 8px 32px rgba(201, 168, 76, 0.40); }
         .cta-btn small { display: block; font-weight: 300; font-size: 13px; opacity: 0.75; margin-top: 4px; letter-spacing: 0.3px; }
-
         /* ===== 加入我们 ===== */
         .join-section { max-width: 820px; margin: 0 auto; padding: 10px 28px 70px; background: #fff; }
         .join-card {
@@ -123,7 +138,6 @@
         .join-btn:hover { transform: scale(1.02); background: #142a4a; box-shadow: 0 10px 36px rgba(11, 26, 47, 0.28); }
         .join-btn small { display: block; font-weight: 300; font-size: 13px; opacity: 0.65; margin-top: 4px; }
         .join-note { margin-top: 16px; font-size: 13px; color: #8a97a8; letter-spacing: 0.5px; }
-
         /* ===== 页脚 ===== */
         .footer {
             background: var(--navy); color: rgba(255,255,255,0.5);
@@ -140,7 +154,6 @@
         .footer .stats { margin-top: 18px; font-size: 12px; color: rgba(255,255,255,0.25); letter-spacing: 0.5px; font-weight: 300; }
         .footer .stats span { color: rgba(255,255,255,0.4); }
         .footer .copyright { margin-top: 14px; font-size: 12px; color: rgba(255,255,255,0.18); letter-spacing: 1px; }
-
         /* ===== 移动端 ===== */
         @media (max-width: 768px) {
             .navbar { flex-direction: column; padding: 10px 16px; gap: 8px; }
@@ -150,6 +163,7 @@
             .hero .subhead { font-size: 17px; letter-spacing: 2px; }
             .article { padding: 40px 18px 30px; }
             .article h2 { font-size: 24px; }
+            .subscribe-card { padding: 32px 20px 30px; }
             .cta-card { padding: 32px 20px 30px; }
             .cta-card h2 { font-size: 22px; }
             .cta-btn { padding: 12px 32px; font-size: 15px; }
@@ -160,7 +174,6 @@
     </style>
 </head>
 <body>
-
     <!-- ===== 导航栏 ===== -->
     <nav class="navbar">
         <a href="#" class="logo">涌现<span>力</span></a>
@@ -168,45 +181,35 @@
             <li><a href="#article-start">关于</a></li>
             <li><a href="#why-now">新职业</a></li>
             <li><a href="#what-we-do">培养</a></li>
+            <li><a href="#subscribe" class="nav-highlight">邮件订阅</a></li>
             <li><a href="#cta">挑战</a></li>
-            <li><a href="#join" class="nav-highlight">加入我们</a></li>
+            <li><a href="#join">加入我们</a></li>
         </ul>
     </nav>
-
     <!-- ===== 首屏 ===== -->
     <header class="hero" id="home">
         <h1>涌·现·<span class="gold">力</span></h1>
         <p class="subhead">专注互联网时代普通人的成长路径</p>
         <p class="desc">在变化中找到属于自己的新职业可能</p>
     </header>
-
     <!-- ===== 文章正文 ===== -->
     <div class="article" id="article-start">
-
         <h2>为什么普通人也应该了解一种新的职业可能？</h2>
         <p style="font-size:17px; color:#0b1a2f; font-weight:500; border-bottom:1px solid #e8d5a3; padding-bottom:14px; margin-bottom:24px;">
             🔹 如果你正在寻找人生下一阶段的可能，这篇文章值得你读完。
         </p>
-
         <p>这个时代，很多人的人生正在进入一个新的阶段。</p>
         <p>有人因为家庭原因暂时离开职场，希望寻找一种可以兼顾生活和发展的方式。<br />
         有人毕业几年后发现，曾经以为稳定的职业路径，并没有想象中那么稳定。<br />
         有人努力学习新的技能，学习 AI、学习互联网工具，希望找到未来的发展方向。<br />
         也有人只是隐隐感觉：<strong>过去那套人生路径，可能已经无法完全适应未来。</strong></p>
-
         <p>如果你正在寻找一种新的职业可能，一种可以通过互联网展开、不受地点限制、能够长期积累的成长方向，那么这篇文章可能适合你。</p>
-
         <p>我们正在寻找这样一群人：希望探索互联网时代新职业方式、通过学习新的能力改变未来、给自己一次机会，验证自己潜力的人。</p>
-
         <div class="divider">◆ ◆ ◆</div>
-
         <h2 id="why-now">为什么现在，需要了解一种新的职业可能？</h2>
-
         <p>过去，一个人的职业路径通常比较清晰：学习 → 进入一家公司 → 积累经验 → 获得收入 → 等待晋升。</p>
         <p>很多人相信：只要进入一个好的组织，只要不断努力，就可以获得长期稳定。</p>
-
         <p>但今天，世界正在发生变化。人工智能的发展、互联网技术的普及，以及社会结构的变化，让过去几十年的职业模式正在逐渐改变。</p>
-
         <p>越来越多人开始面对：</p>
         <ul>
             <li>职业周期越来越短</li>
@@ -214,45 +217,31 @@
             <li>单一工作经验的价值下降</li>
             <li>收入增长越来越困难</li>
         </ul>
-
         <div class="highlight-box">
             <p style="margin:0;">过去：一个人依靠一家公司、一份职业，可以获得长期安全感。<br />
             <strong>未来：一个人的安全感，可能更多来自于 —— 你是否拥有持续创造价值的能力。</strong></p>
         </div>
-
         <h3>从依附组织，到经营自己的能力</h3>
-
         <p>过去，人们更多依靠组织获得机会：进入企业、获得岗位、完成工作、换取收入。<br />
         但互联网时代正在改变人与机会之间的连接方式。</p>
-
         <p>今天，一个普通人也可以通过互联网：学习新的能力、连接更多资源、建立自己的影响力、创造新的价值。</p>
-
         <p>未来越来越重要的问题，不再只是："哪个公司愿意给我一个机会？"<br />
         而是：<strong>"我是否拥有创造机会的能力？"</strong></p>
-
         <p>你的能力、经验、学习能力，以及你建立的连接，都可能成为属于自己的长期资产。</p>
-
         <div class="divider">◆ ◆ ◆</div>
-
         <h2>一种新的线上职业形态正在出现</h2>
-
         <p>过去：工作意味着固定地点、固定时间、固定组织。<br />
         现在：远程工作、线上协作、数字技能职业正在逐渐普及。</p>
-
         <p>越来越多的人开始探索：</p>
         <ul>
             <li>是否存在一种职业，不依赖固定办公地点？</li>
             <li>是否存在一种能力，可以通过长期学习不断提升？</li>
             <li>是否存在一种方式，可以让普通人通过互联网获得新的机会？</li>
         </ul>
-
         <p>经过我们长达 10 年的探索，我们认为：<strong>互联网数字能力职业</strong>，就是其中一种高潜力方向。</p>
-
         <h3>为什么我们选择数字能力职业作为成长方向？</h3>
-
         <p>这是一种非常适合普通人的新型线上职业。<br />
         它不依赖传统办公场地、不依赖复杂团队架构，<strong>完全依靠个人数字能力、线上认知、数据分析与决策能力创造价值</strong>。</p>
-
         <p>它高度契合互联网时代的职业特征：</p>
         <ul>
             <li>可以全程线上完成</li>
@@ -260,103 +249,100 @@
             <li>可以持续积累能力与经验</li>
             <li>可以通过实践结果验证个人成长</li>
         </ul>
-
         <p>当然，这种新型数字职业并不适合所有人。能够长期深耕、持续成长的人，永远是少数。</p>
         <p>但大多数普通人最大的问题是：<strong>想尝试新赛道，却找不到正规、系统、适合新人的学习路径。</strong></p>
-
         <h3>为什么普通人很难踏入新型数字职业赛道？</h3>
-
         <p>过去，线上新型职业领域长期存在三大痛点：</p>
-
         <p><strong>第一，信息不透明。</strong><br />
         很多人不知道：新型数字职业到底是什么？自己适不适合？普通人应该从哪里入门？</p>
-
         <p><strong>第二，学习路径混乱。</strong><br />
         网上碎片内容太多、教程零散、不成体系。很多人自学很久，依然无法形成可落地、可复用的职业能力。</p>
-
         <p><strong>第三，缺少系统化新人培养体系。</strong><br />
         数字职业是一套需要长期训练的综合能力，包含思维、方法、执行、复盘、自我管理等整套体系。市面上很少有专门针对普通人的完整成长方案。</p>
-
         <div class="divider">◆ ◆ ◆</div>
-
         <h2 id="what-we-do">我们正在做什么？</h2>
-
         <p>我们搭建了一套<strong>互联网数字职业人才培养体系</strong>。</p>
-
         <p>我们不做碎片化知识分享，我们专注帮助想要转型、想要成长、想要新职业机会的普通人：了解线上数字职业、体验新型工作模式、判断自身适配度、进入系统化成长路径。</p>
-
         <p>我们主要帮助新人解决三大问题：</p>
         <ul>
             <li><strong>自己是否适合线上数字职业</strong></li>
             <li><strong>零基础应该如何系统化入门</strong></li>
             <li><strong>自己是否具备深耕新赛道的潜力</strong></li>
         </ul>
-
         <p>为此我们搭建了完整的：<strong>标准化学习路径、阶段性挑战机制、能力筛选体系、线上成长社群</strong>。让每一个想要改变的人，都可以先通过实践验证自己、看清未来方向。</p>
-
         <div class="divider">◆ ◆ ◆</div>
-
         <h2>为什么值得给自己一次尝试的机会？</h2>
-
         <p>很多人在面对人生选择时，会等待一个"百分百确定的答案"。</p>
         <p>但现实是：<strong>绝大多数机会，只有尝试之后，才知道适不适合自己。</strong></p>
-
         <p>你不需要立刻决定：我要全职转型。</p>
         <p>你只需要先回答一个简单的问题：</p>
-
         <div class="highlight-box">
             <p style="margin:0; font-size:18px;"><strong>我有没有可能，适合这条全新的线上职业道路？</strong></p>
         </div>
-
         <p>所以我们设计了<strong>15 分钟新人体验挑战</strong>。</p>
         <p>它不制造暴富幻想、不承诺速成，只帮助你：通过一次真实的线上体验，判断自己是否适合互联网数字新职业。</p>
-
     </div>
-
+    <!-- ===== 邮件订阅表单【核心！用于Sender审核，Double opt-in】 ===== -->
+    <div class="subscribe-section" id="subscribe">
+        <div class="subscribe-card">
+            <h2>邮件订阅 · <span class="gold">成长资讯</span></h2>
+            <p>如果你对互联网新职业感兴趣，可以自愿填写表单订阅我们的电子简报。我们将定期发送行业洞察、学习资料与活动通知。<br>提交邮箱即代表你主动选择接收我们的邮件，后续可随时通过邮件内退订链接取消订阅。</p>
+            <form>
+                <div class="form-row">
+                    <label>姓名</label>
+                    <input type="text" placeholder="请输入你的姓名">
+                </div>
+                <div class="form-row">
+                    <label>邮箱地址</label>
+                    <input type="email" placeholder="请输入用于接收简报的邮箱">
+                </div>
+                <div class="checkbox-row">
+                    <input type="checkbox" id="consent" required>
+                    <label for="consent">我明确同意接收来自涌现力的邮件资讯，知晓可以随时退订。</label>
+                </div>
+                <button type="submit" class="submit-btn">提交订阅</button>
+                <p class="privacy-text">隐私说明：我们不会出售、转让你的邮箱信息。所有订阅邮件底部均包含永久有效的一键退订链接。提交后会发送确认邮件，你需要点击邮件内链接完成二次确认（Double Opt-in），订阅才会正式生效。</p>
+            </form>
+        </div>
+    </div>
     <!-- ===== 15分钟挑战 CTA ===== -->
     <div class="cta-section" id="cta">
         <div class="cta-card">
             <h2>⏳ 15分钟 · 验证 <span class="gold">你的潜力</span></h2>
             <p>免费注册挑战账号，完成一次真实线上体验。<br />
             <span style="opacity:0.5; font-size:14px;">挑战结果将发送至你的邮箱，请填写真实邮箱</span></p>
-            <a href="https://ai.ziyingke.com/login?ref=042" target="_blank" class="cta-btn">
+            <a href="#" class="cta-btn">
                 立即开始挑战
                 <small>15分钟，发现一种新的职业可能</small>
             </a>
         </div>
     </div>
-
     <!-- ===== 加入我们 ===== -->
     <div class="join-section" id="join">
         <div class="join-card">
             <span class="icon">🤝</span>
             <h2>加入我们 · <span class="gold">一起成长</span></h2>
             <p>如果你对互联网时代的新职业方式感兴趣，想第一时间获取我们的成长资讯、活动通知与行业洞察，欢迎留下你的姓名和邮箱。</p>
-            <a href="https://5fanhztx.jsjform.com/f/wkJU8l" target="_blank" class="join-btn">
+            <a href="#" class="join-btn">
                 填写信息，加入我们
                 <small>只需姓名和邮箱，30秒完成</small>
             </a>
             <p class="join-note">🔒 我们承诺不会泄露你的个人信息，仅用于发送与涌现力相关的成长内容。</p>
         </div>
     </div>
-
     <!-- ===== 页脚 ===== -->
     <footer class="footer">
         <div class="brand">涌·现·<span>力</span></div>
         <div style="font-size:14px; color:rgba(255,255,255,0.4); letter-spacing:2px; margin:4px 0;">专注互联网时代普通人的成长路径</div>
         <div class="wechat">📱 公众号：涌现力.com</div>
-
         <div class="stats">
             本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
             &nbsp;·&nbsp; 今日：<span id="busuanzi_value_site_uv"></span> 人
         </div>
-
-        <div class="copyright">© 2026 涌现力 · 陪你成为更好的自己</div>
+        <div class="copyright">© 2026 涌现力 · 陪你成为更好的自己 | 网站域名：yongxianli.com</div>
     </footer>
-
     <!-- ===== 不蒜子统计 ===== -->
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
     <!-- ===== 平滑滚动 ===== -->
     <script>
         document.querySelectorAll('.nav-links a').forEach(link => {
@@ -372,6 +358,5 @@
         });
         console.log('✨ 涌现力 · 新职业可能 ✨');
     </script>
-
 </body>
 </html>
